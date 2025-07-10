@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
+/* === Variables CSS === */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --DarkBlue-DarkMode-Elements: hsl(209, 23%, 22%);
+  --VeryDarkBlue-DarkMode-Background: hsl(207, 26%, 17%);
+  --VeryDarkBlue-LightMode-Text: hsl(200, 15%, 8%);
+  --DarkGray-LightMode-Input: hsl(0, 0%, 52%);
+  --VeryLightGray-LightMode-Background: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: var(--VeryLightGray-LightMode-Background);
+  --foreground: var(--VeryDarkBlue-LightMode-Text);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--VeryDarkBlue-DarkMode-Background);
+    --foreground: var(--White);
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nunito Sans', Arial, sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
 }
