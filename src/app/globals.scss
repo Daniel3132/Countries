@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "../styles/variables.scss";
+
+// Default: Dark Theme
+:root {
+  --background: hsl(207, 26%, 17%); // dark background
+  --foreground: hsl(0, 0%, 100%);   // white text
+}
+
+// Light Theme (when class "dark" is NOT present)
+html:not(.dark) {
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(200, 15%, 8%);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Nunito Sans', Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}

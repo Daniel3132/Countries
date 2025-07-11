@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import styles from './Header.module.scss';
 
 export default function Header() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
     const stored = sessionStorage.getItem('theme');
-    const isDark = stored !== 'light'; // default: dark
+    const isDark = stored !== 'light';
     setDark(isDark);
     document.documentElement.classList.toggle('dark', isDark);
   }, []);
@@ -21,10 +22,11 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center p-4 shadow bg-white text-black dark:bg-gray-800 dark:text-white">
-      <Link href="/" className="text-lg font-bold">
+    <header className={styles.header}>
+      <Link href="/" className={styles.title}>
         Where in the world?
-      </Link>      <button onClick={toggle} className="text-sm hover:underline">
+      </Link>
+      <button onClick={toggle} className={styles.toggle}>
         {dark ? '☀ Light Mode' : '🌙 Dark Mode'}
       </button>
     </header>

@@ -1,25 +1,36 @@
+import { showToast } from '@/lib/toast';
+
 const BASE_URL = 'https://restcountries.com/v3.1';
 
-export async function fetchAllCountries(fields = 'name,capital,flags,cca3,region') {
-  const res = await fetch(`${BASE_URL}/all?fields=${fields}`);
-  if (!res.ok) throw new Error('Failed to fetch countries');
-  return res.json();
+const fetchJson = async (url: string) => {
+  try {
+    const res = await fetch(url, { cache: 'force-cache' });
+    if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+    return res.json();
+  } catch (err) {
+    const msg = (err as Error).message || 'Unknown error';
+    showToast(msg);
+    throw err;
+  }
+};
+
+export async function fetchAllCountries(fields = 'name,flags,population,region,cca3,capital') {
+  return fetchJson(`${BASE_URL}/all?fields=${fields}`);
 }
 
 export async function fetchCountryByCode(code: string) {
-  const res = await fetch(`${BASE_URL}/alpha/${code}`);
-  if (!res.ok) throw new Error('Country not found');
-  return res.json();
+  return fetchJson(`${BASE_URL}/alpha/${code}`);
 }
 
 export async function searchCountryByName(name: string) {
-  const res = await fetch(`${BASE_URL}/name/${name}`);
-  if (!res.ok) return [];
-  return res.json();
+  try {
+    return await fetchJson(`${BASE_URL}/name/${name}`);
+  } catch {
+    showToast('No countries found with that name');
+    return [];
+  }
 }
 
 export async function fetchCountriesByRegion(region: string) {
-  const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
-  if (!res.ok) throw new Error('Region not found');
-  return res.json();
+  return fetchJson(`${BASE_URL}/region/${region}`);
 }
