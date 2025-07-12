@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
-export function showToast(message: string, type: 'error' | 'info' = 'error') {
-  if (type === 'error') toast.error(message);
+export function showToast(message: string, type: "error" | "info" = "error") {
+  if (type === "error") toast.error(message);
   else toast(message);
 }

@@ -1,9 +1,9 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+"use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function CountrySearch() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {

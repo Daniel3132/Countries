@@ -1,17 +1,20 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import styles from "./Toolbar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   onSearch: (query: string) => void;
   onRegionChange: (region: string) => void;
 };
 
-const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 export default function CountryToolbar({ onSearch, onRegionChange }: Props) {
-  const [query, setQuery] = useState('');
-  const [region, setRegion] = useState('');
+  const [query, setQuery] = useState("");
+  const [region, setRegion] = useState("");
 
   useEffect(() => {
     onSearch(query);
@@ -22,22 +25,27 @@ export default function CountryToolbar({ onSearch, onRegionChange }: Props) {
   }, [region]);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between gap-4 mt-6">
-      <input
-        className="w-full md:w-1/2 px-4 py-2 rounded shadow bg-white text-black dark:bg-gray-700 dark:text-white"
-        placeholder="Search for a country..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+    <div className={styles.toolbar}>
+      <div className={styles.searchContainer}>
+        <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+        <input
+          className={styles.input}
+          placeholder="Search for a country..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
 
       <select
         value={region}
         onChange={(e) => setRegion(e.target.value)}
-        className="px-4 py-2 rounded shadow bg-white text-black dark:bg-gray-700 dark:text-white"
+        className={styles.select}
       >
         <option value="">Filter by Region</option>
         {regions.map((r) => (
-          <option key={r} value={r}>{r}</option>
+          <option key={r} value={r}>
+            {r}
+          </option>
         ))}
       </select>
     </div>

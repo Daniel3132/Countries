@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import styles from './CountryCard.module.scss';
+import Link from "next/link";
+import styles from "./CountryCard.module.scss";
 
 type Props = {
   country?: any;
@@ -10,7 +10,7 @@ export default function CountryCard({ country, loading = false }: Props) {
   if (loading) {
     return (
       <div
-        className="animate-pulse rounded overflow-hidden bg-gray-200 dark:bg-gray-700"
+        className="animate-pulse rounded overflow-hidden element"
         style={{ height: 320 }}
         aria-label="Loading country card"
       >
@@ -28,21 +28,31 @@ export default function CountryCard({ country, loading = false }: Props) {
   return (
     <Link href={`/country/${country.cca3.toLowerCase()}`}>
       <div className={styles.card}>
-        <img src={country.flags.svg} alt={country.flags.alt} className={styles.flag} />
+        <img
+          src={country.flags.svg}
+          alt={country.flags.alt}
+          className={styles.flag}
+        />
         <div className={styles.info}>
           <h2>{country.name.common}</h2>
           <ul>
             <li>
-              <span><strong>Population:</strong> </span>
-              <span>{country.population?.toLocaleString() || 'N/A'}</span>
+              <span>
+                <strong>Population:</strong>{" "}
+              </span>
+              <span>{country.population?.toLocaleString() || "N/A"}</span>
             </li>
             <li>
-              <span><strong>Region:</strong> </span>
-              <span>{country.region || 'N/A'}</span>
+              <span>
+                <strong>Region:</strong>{" "}
+              </span>
+              <span>{country.region || "N/A"}</span>
             </li>
             <li>
-              <span><strong>Capital:</strong> </span>
-              <span>{country.capital?.[0] || 'N/A'}</span>
+              <span>
+                <strong>Capital:</strong>{" "}
+              </span>
+              <span>{country.capital?.[0] || "N/A"}</span>
             </li>
           </ul>
         </div>

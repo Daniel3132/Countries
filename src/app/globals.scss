@@ -1,21 +1,40 @@
-@import "tailwindcss";
-@import "../styles/variables.scss";
+@use "tailwindcss";
+@use "../styles/variables.scss";
 
-// Default: Dark Theme
 :root {
-  --background: hsl(207, 26%, 17%); // dark background
-  --foreground: hsl(0, 0%, 100%);   // white text
+  --background: var(--VeryDarkBlueDarkModeBackground);
+  --foreground: var(--WhiteDarkModeTextLightModeElements);
+  --text-color: var(--WhiteDarkModeTextLightModeElements);
+  --element-bg: var(--DarkBlueDarkModeElements);
 }
 
 // Light Theme (when class "dark" is NOT present)
 html:not(.dark) {
-  --background: hsl(0, 0%, 98%);
-  --foreground: hsl(200, 15%, 8%);
+  --background: var(--VeryLightGrayLightModeBackground);
+  --foreground: var(--VeryDarkBlueLightModeText);
+  --text-color: var(--VeryDarkBlueLightModeText);
+  --element-bg: var(--WhiteDarkModeTextLightModeElements);
 }
 
+// Global styles
 body {
   background-color: var(--background);
-  color: var(--foreground);
+  color: var(--text-color);
   font-family: 'Nunito Sans', Arial, sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+// Apply text color generally
+body {
+  color: var(--text-color);
+}
+
+// Utility class for elements with theme background and foreground
+.element {
+  background-color: var(--element-bg);
+  color: var(--text-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, color 0.3s;
 }

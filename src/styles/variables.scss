@@ -9,3 +9,12 @@
   --background: var(--VeryDarkBlueDarkModeBackground);
   --foreground: var(--WhiteDarkModeTextLightModeElements);
 }
+
+// Utility class for elements with theme background and foreground
+.element {
+  background-color: var(--element-bg);
+  color: var(--text-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
