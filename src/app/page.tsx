@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <main className="p-4">
       <CountryToolbar onSearch={setQuery} onRegionChange={setRegion} />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
         {loading
           ? skeletons.map((_, i) => <CountryCard key={i} loading />)
           : filtered.map((c) => <CountryCard key={c.cca3} country={c} />)}

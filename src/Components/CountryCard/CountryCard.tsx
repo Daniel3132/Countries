@@ -10,7 +10,7 @@ export default function CountryCard({ country, loading = false }: Props) {
   if (loading) {
     return (
       <div
-        className="animate-pulse rounded overflow-hidden bg-gray-200 dark:bg-gray-700"
+        className="animate-pulse rounded overflow-hidden element"
         style={{ height: 320 }}
         aria-label="Loading country card"
       >

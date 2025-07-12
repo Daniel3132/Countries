@@ -1,0 +1,46 @@
+@use '@/styles/variables.scss';
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.select {
+  @extend .element;
+  padding: 0.7rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  width: auto;
+}
+
+.searchContainer {
+  position: relative;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.input {
+  @extend .element;
+  width: 100%;
+  padding: 0.5rem 0rem 0.5rem 2.5rem;
+  font-size: 0.875rem;
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  pointer-events: none;
+}

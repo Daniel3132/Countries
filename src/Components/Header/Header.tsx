@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
   const [dark, setDark] = useState(true);
@@ -27,8 +29,8 @@ export default function Header() {
         Where in the world?
       </Link>
       <button onClick={toggle} className={styles.toggle}>
-        {dark ? '☀ Light Mode' : '🌙 Dark Mode'}
-      </button>
+        <FontAwesomeIcon icon={dark ? faSun : faMoon} className="mr-2" />
+        {dark ? 'Light Mode' : 'Dark Mode'}      </button>
     </header>
   );
 }
