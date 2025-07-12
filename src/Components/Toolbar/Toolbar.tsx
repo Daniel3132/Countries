@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import styles from './Toolbar.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from "react";
+import styles from "./Toolbar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   onSearch: (query: string) => void;
   onRegionChange: (region: string) => void;
 };
 
-const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 export default function CountryToolbar({ onSearch, onRegionChange }: Props) {
-  const [query, setQuery] = useState('');
-  const [region, setRegion] = useState('');
+  const [query, setQuery] = useState("");
+  const [region, setRegion] = useState("");
 
   useEffect(() => {
     onSearch(query);
@@ -43,7 +43,9 @@ export default function CountryToolbar({ onSearch, onRegionChange }: Props) {
       >
         <option value="">Filter by Region</option>
         {regions.map((r) => (
-          <option key={r} value={r}>{r}</option>
+          <option key={r} value={r}>
+            {r}
+          </option>
         ))}
       </select>
     </div>
